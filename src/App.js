@@ -4,6 +4,8 @@ import "./App.css";
 import { Route, Link, Switch } from "react-router-dom";
 import TriviaDetail from "./TriviaDetail.js";
 import AllTrivia from "./AllTrivia.js";
+import AllCategories from "./AllCategories.js";
+
 import Axios from "axios";
 const backendUrl = process.env.BACKEND_URL || "http://localhost:3000/api";
 //const backendUrl =
@@ -21,6 +23,7 @@ class App extends Component {
     super();
     this.state = {
       triviaQuestions: [],
+      categories: [],
     };
   }
 
@@ -33,6 +36,16 @@ class App extends Component {
       });
       console.log(this.state.triviaQuestions);
       console.log(response);
+    });
+    Axios.get(`${backendUrl}/category`).then((response) => {
+      console.log(response.data.categoryAll);
+
+      this.setState({
+        categories: response.data.categoryAll,
+      });
+      console.log(this.state.categories);
+      console.log(response);
+      console.log(response.data.categoryAll.name);
     });
   }
 
@@ -67,7 +80,9 @@ class App extends Component {
     return (
       <div className="App">
         <nav>
-          <Link to="/trivia">All Trivia</Link>
+          <Link to="/trivia">All Trivia </Link>
+          <p></p>
+          <Link to="/category"> Trivia Categories</Link>
         </nav>
         <main>
           <Switch>
@@ -76,6 +91,13 @@ class App extends Component {
               path="/trivia"
               component={() => (
                 <AllTrivia triviaQuestions={this.state.triviaQuestions} />
+              )}
+            />
+            <Route
+              exact
+              path="/category"
+              component={() => (
+                <AllCategories categories={this.state.categories} />
               )}
             />
             <Route

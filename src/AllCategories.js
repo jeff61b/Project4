@@ -1,28 +1,21 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-// Muse react app conversion to Trivia react app
-// artist => question
-// artists => triviaQuestions
-// AllArtists => AllTrivia
-// allArtists => allTrivia
-// ArtistDetail => TriviaDetail
-
-class AllTrivia extends Component {
+//console.log(this.props.categories);
+class AllCategories extends Component {
   render() {
-    console.log("AllTrivia");
-    const allTrivia = this.props.triviaQuestions.map((question) => {
+    const allCategories = this.props.categories.map((category) => {
       return (
-        <li key={question.id}>
-          <Link to={`/trivia/${question.id}`}>{question.question}</Link>
+        <li key={category.id}>
+          <Link to={`/category/${category.id}`}>{category.name}</Link>
         </li>
       );
     });
 
     return (
       <div>
-        <h1>All Trivia Questions</h1>
-        <h3>Create a New Trivia Question</h3>
+        <h1>All Trivia Categories</h1>
+        {/* <h3>Create a New Trivia Question</h3>
         <form onSubmit={this.props.addTrivia}>
           <label htmlFor="question">Question:</label>
           <input type="text" name="question" /> <br />
@@ -39,11 +32,11 @@ class AllTrivia extends Component {
           <label htmlFor="categoryId">Category ID:</label>
           <input type="number" name="categoryId" /> <br />
           <input type="submit" value="Add Trivia Question" />
-        </form>
-        {<ol>{allTrivia}</ol>}
+        </form> */}
+        {<ol>{allCategories}</ol>}
       </div>
     );
   }
 }
 
-export default AllTrivia;
+export default AllCategories;
