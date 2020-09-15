@@ -68,7 +68,7 @@ class App extends Component {
     }).then((response) => {
       console.log(response);
       let tempArray = this.state.triviaQuestions;
-      tempArray.push(response.data.triviaQuestion);
+      tempArray.push(response.data.newQuestion);
       this.setState({
         triviaQuestions: tempArray,
       });
@@ -90,7 +90,10 @@ class App extends Component {
               exact
               path="/trivia"
               component={() => (
-                <AllTrivia triviaQuestions={this.state.triviaQuestions} />
+                <AllTrivia
+                  triviaQuestions={this.state.triviaQuestions}
+                  addTrivia={this.addTrivia}
+                />
               )}
             />
             <Route
