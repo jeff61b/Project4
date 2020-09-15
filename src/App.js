@@ -2,9 +2,8 @@ import React, { Component } from "react";
 // import logo from "./logo.svg";
 import "./App.css";
 import { Route, Link, Switch } from "react-router-dom";
-// import TriviaDetail from "./TriviaDetail.js";
-import AllTrivia from "./AllTrivia.js";
 import TriviaDetail from "./TriviaDetail.js";
+import AllTrivia from "./AllTrivia.js";
 import Axios from "axios";
 const backendUrl = process.env.BACKEND_URL || "http://localhost:3000/api";
 //const backendUrl =
@@ -42,8 +41,8 @@ class App extends Component {
   // to tempArray. Add the new question and answers to tempArray
   // and copy tempArray back to this.state.triviaQuestions.
   addTrivia = (event) => {
-    event.preventDefault();
     console.log("addTrivia");
+    event.preventDefault();
     console.log(event.target.name.value);
     Axios.post(`${backendUrl}/trivia`, {
       question: event.target.question.value,

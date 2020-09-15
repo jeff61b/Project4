@@ -13,9 +13,7 @@ class AllTrivia extends Component {
     const allTrivia = this.props.triviaQuestions.map((question) => {
       return (
         <li key={question.id}>
-          <Link to={`/triviaQuestions/${question.id}`}>
-            {question.question}
-          </Link>
+          <Link to={`/trivia/${question.id}`}>{question.question}</Link>
         </li>
       );
     });
@@ -25,13 +23,20 @@ class AllTrivia extends Component {
         <h1>All Trivia Questions</h1>
         <h3>Create a New Trivia Question</h3>
         <form onSubmit={this.props.addTrivia}>
-          <input type="text" name="question" />
-          <input type="text" name="answer1" />
-          <input type="text" name="answer2" />
-          <input type="text" name="answer3" />
-          <input type="text" name="answer4" />
+          <label htmlFor="question">Question:</label>
+          <input type="text" name="question" /> <br />
+          <label htmlFor="answer1">Answer 1:</label>
+          <input type="text" name="answer1" /> <br />
+          <label htmlFor="answer2">Answer 2:</label>
+          <input type="text" name="answer2" /> <br />
+          <label htmlFor="answer3">Answer 3:</label>
+          <input type="text" name="answer3" /> <br />
+          <label htmlFor="answer4">Answer 4:</label>
+          <input type="text" name="answer4" /> <br />
+          <label htmlFor="correctAnswer">Correct Answer #:</label>
           <input type="number" name="correctAnswer" />
-          <input type="number" name="categoryId" />
+          <label htmlFor="categoryId">Category ID:</label>
+          <input type="number" name="categoryId" /> <br />
           <input type="submit" value="Add Trivia Question" />
         </form>
         {<ol>{allTrivia}</ol>}
