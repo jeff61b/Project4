@@ -12,13 +12,6 @@ const backendUrl = process.env.BACKEND_URL || "http://localhost:3000/api";
 //const backendUrl =
 //  process.env.REACT_APP_BACKEND_URL || "https://muse-backend.herokuapp.com/api";
 
-// Muse react app conversion to Trivia react app
-// artist => question
-// artists => triviaQuestions
-// AllArtists => AllTrivia
-// ArtistDetail => TriviaDetail
-//
-
 class App extends Component {
   constructor(props) {
     super();
@@ -102,6 +95,38 @@ class App extends Component {
         triviaQuestions: tempArray,
       });
     });
+    this.componentDidMount();
+  };
+
+  // When a user clicks the Update Trivia button, the trivia data they
+  // edited is passed to this method and rewritten to the database.
+  // if no category was entered the category of 5 is the default.
+  updateTrivia = (event) => {
+    if (event.target.categoryId.value == 0) {
+      event.target.categoryId.value = 5;
+    }
+    console.log("updateTrivia");
+    event.preventDefault();
+    let updateId = event.target.triviaId.value;
+    console.log(event.target.question.value);
+    console.log(event.target.categoryId.value);
+
+    // Axios.put(`${backendUrl}/trivia/${updateId}`, {
+    //   question: event.target.question.value,
+    //   answer1: event.target.answer1.value,
+    //   answer2: event.target.answer2.value,
+    //   answer3: event.target.answer3.value,
+    //   answer4: event.target.answer4.value,
+    //   correctAnswer: event.target.correctAnswer.value,
+    //   categoryId: event.target.categoryId.value,
+    // }).then((response) => {
+    //   console.log(response);
+    //   let tempArray = this.state.triviaQuestions;
+    //   tempArray.push(response.data.triviaQuestion);
+    //   this.setState({
+    //     triviaQuestions: tempArray,
+    //   });
+    // });
   };
 
   render() {

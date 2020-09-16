@@ -1,13 +1,5 @@
 import React, { Component } from "react";
 
-// Muse react app conversion to Trivia react app
-// artist => question
-// artists => triviaQuestions
-// AllArtists => AllTrivia
-// allArtists => allTrivia
-// ArtistDetail => TriviaDetail
-// artistDetail => triviaDetail
-
 class TriviaDetail extends Component {
   render() {
     const triviaDetail = this.props.triviaQuestions.find((question) => {
@@ -21,7 +13,7 @@ class TriviaDetail extends Component {
       triviaDetail.categoryId = 5;
       triviaDetail.Category = "Entertainment";
     }
-    console.log(this.props.deleteId);
+    // console.log(this.props.deleteId);
 
     // console.log(triviaDetail.id);
     // if (this.props.deleteId === 0) {
