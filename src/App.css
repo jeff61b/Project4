@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  /* background-color: darkblue; */
+  background-color: rgb(55, 55, 110);
+  color: aliceblue;
 }
 
 .App-logo {
@@ -13,6 +16,124 @@
   }
 }
 
+.triviaBackground {
+  /* background-color: rgb(10, 0, 40); */
+  /* background-color: black; */
+  color: white;
+  border-radius: 35px;
+}
+
+.linkText {
+  color: rgb(210, 210, 0);
+}
+
+#navigation {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  justify-content: space-evenly;
+  font-size: larger;
+  font-weight: bold;
+  color: rgb(120, 120, 40);
+  /* background-color: rgb(10, 0, 40); */
+  /* background-color: darkblue; */
+  /* color: aliceblue; */
+}
+
+#main {
+  /* background-color: rgb(10, 10, 70); */
+  color: white;
+}
+
+#questionAnswers {
+  width: 650px;
+  font-size: larger;
+  font-weight: bold;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  /* background-color: darkblue; */
+  /* background-color: rgb(10, 10, 60); */
+  background-color: rgb(100, 100, 120);
+  background-color: lightgray;
+}
+
+.numbers {
+  width: 50px;
+  font-size: large;
+  font-weight: bolder;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  /* background-color: darkblue; */
+  background-color: rgb(100, 100, 120);
+  color: white;
+}
+
+.labels {
+  font-weight: bolder;
+  font-size: x-large;
+}
+
+#clickButton {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: larger;
+  font-weight: bold;
+  /* background-color: blue; */
+  background-color: rgb(100, 100, 30);
+  color: aliceblue;
+  height: 40px;
+  margin: 10px, 10px, 10px, 10px;
+}
+
+.triviaList {
+  color: white;
+  font-size: 22px;
+  margin-bottom: 8px;
+  margin-right: 20px;
+  margin-left: 20px;
+  /* background-color: rgb(30, 0, 10); */
+}
+#detailRecord {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+#detailQuestion {
+  display: flex;
+  text-align: center;
+  flex-direction: row;
+  justify-items: center;
+  justify-content: center;
+  justify-self: center;
+  font-weight: bold;
+  font-size: large;
+  /* justify-content: space-around; */
+}
+
+.leftPrompt {
+  font-style: italic;
+  font-weight: bold;
+  color: beige;
+}
+
+#editButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+  text-align: center;
+  /* justify-items: center; */
+  /*justify-content: space-evenly; */
+  font-size: larger;
+  font-weight: bold;
+  /* height: 25px; */
+  margin-bottom: 50px;
+  margin-top: 20px;
+  margin-left: 10%;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -21,12 +142,12 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  /* color: white; */
 }
 
-.App-link {
+/* .App-link {
   color: #61dafb;
-}
+} */
 
 @keyframes App-logo-spin {
   from {
