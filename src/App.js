@@ -18,6 +18,7 @@ class App extends Component {
     this.state = {
       triviaQuestions: [],
       categories: [],
+      currentUrl: window.location.href,
     };
   }
 
@@ -41,6 +42,13 @@ class App extends Component {
       console.log(response);
       console.log(response.data.categoryAll.name);
     });
+    const myUrl = window.location.href;
+    this.setState({
+      currentUrl: myUrl,
+    });
+    console.log(myUrl);
+    console.log(this.state.currentUrl);
+    console.log(window.location.href);
   }
 
   // From the trivia detail page, when the user clicks the "Delete
@@ -62,8 +70,9 @@ class App extends Component {
         });
       }
     });
-    console.log(this.state.triviaQuestions);
-    this.componentDidMount();
+    setTimeout(console.log(this.state.triviaQuestions), 1000);
+    window.location.assign(this.state.currentUrl);
+    // this.componentDidMount();
   };
 
   // When a user clicks the Add Trivia button, the trivia data they
@@ -95,8 +104,15 @@ class App extends Component {
         triviaQuestions: tempArray,
       });
     });
-    this.componentDidMount();
+    setTimeout(console.log(this.state.triviaQuestions), 1000);
+    window.location.assign(this.state.currentUrl);
+    // this.componentDidMount();
   };
+
+  // const updateTrivia = async (event) => {
+  //   event.preventDefault();
+  //   let updateId = parseInt(event.target.triviaId.value);
+  // }
 
   // When a user clicks the Update Trivia button, the trivia data they
   // edited is passed to this method and rewritten to the database.
@@ -105,28 +121,49 @@ class App extends Component {
     if (event.target.categoryId.value == 0) {
       event.target.categoryId.value = 5;
     }
-    console.log("updateTrivia");
     event.preventDefault();
-    let updateId = event.target.triviaId.value;
+    console.log("updateTrivia");
+    console.log(event);
     console.log(event.target.question.value);
-    console.log(event.target.categoryId.value);
+    // let xyz = 0 / 0;
 
-    // Axios.put(`${backendUrl}/trivia/${updateId}`, {
-    //   question: event.target.question.value,
-    //   answer1: event.target.answer1.value,
-    //   answer2: event.target.answer2.value,
-    //   answer3: event.target.answer3.value,
-    //   answer4: event.target.answer4.value,
-    //   correctAnswer: event.target.correctAnswer.value,
-    //   categoryId: event.target.categoryId.value,
-    // }).then((response) => {
-    //   console.log(response);
-    //   let tempArray = this.state.triviaQuestions;
-    //   tempArray.push(response.data.triviaQuestion);
-    //   this.setState({
-    //     triviaQuestions: tempArray,
-    //   });
+    let updateId = parseInt(event.target.triviaId.value);
+    console.log(updateId);
+    //   console.log(event.target.categoryId.value);
+
+    // let response = await Axios.put(`${backendUrl}/trivia/${updateId}`, {
+    //      question: event.target.question.value,
+    //      answer1: event.target.answer1.value,
+    //      answer2: event.target.answer2.value,
+    //      answer3: event.target.answer3.value,
+    //      answer4: event.target.answer4.value,
+    //      correctAnswer: event.target.correctAnswer.value,
+    //      categoryId: event.target.categoryId.value,
+    //      id: updateId,
     // });
+    // let updatedTrivia = response.data.triviaQuestion;
+
+    Axios.put(`${backendUrl}/trivia/${updateId}`, {
+      question: event.target.question.value,
+      answer1: event.target.answer1.value,
+      answer2: event.target.answer2.value,
+      answer3: event.target.answer3.value,
+      answer4: event.target.answer4.value,
+      correctAnswer: event.target.correctAnswer.value,
+      categoryId: event.target.categoryId.value,
+      id: updateId,
+    }).then((response) => {
+      console.log(response);
+      console.log(response.data.triviaQuestion);
+      let tempArray = this.state.triviaQuestions;
+      tempArray.push(response.data.triviaQuestion);
+      console.log(tempArray);
+      this.setState({
+        triviaQuestions: tempArray,
+      });
+    });
+    setTimeout(console.log(this.state.triviaQuestions), 1000);
+    window.location.assign(this.state.currentUrl);
   };
 
   render() {
@@ -168,6 +205,7 @@ class App extends Component {
                   {...routerProps}
                   triviaQuestions={this.state.triviaQuestions}
                   deleteTrivia={this.deleteTrivia}
+                  updateTrivia={this.updateTrivia}
                 />
               )}
             />
