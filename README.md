@@ -33,5 +33,3 @@ This React App interfaces between the user and the backend application.
 ![](AllTriviaScreen.png)
 ![](TriviaDetailScreen.png)
 ![](TriviaCategoryScreen.png)
-
-## Available Scripts
