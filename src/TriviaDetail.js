@@ -14,22 +14,6 @@ class TriviaDetail extends Component {
     //   triviaDetail.Category = "Entertainment";
     // }
 
-    // console.log(this.props.deleteId);
-
-    // console.log(triviaDetail.id);
-    // if (this.props.deleteId === 0) {
-    //   this.setState({
-    //     deleteId: triviaDetail.id,
-    //   });
-    //   console.log(this.props.deleteId);
-    // }
-    // if (this.props.deleteId === null) {
-    //   this.setState({
-    //     deleteId: triviaDetail.id,
-    //   });
-    //   console.log(this.props.deleteId);
-    // }
-
     return (
       <div id="detailRecord">
         <br></br>
@@ -118,11 +102,9 @@ class TriviaDetail extends Component {
               value="Update This Question"
             />
           </form>
-          {/* <h2 class="leftPrompt">Question : </h2>
-          <h2> {triviaDetail.question}</h2> */}
         </div>
 
-        <h2>trivia id: {triviaDetail.id}</h2>
+        {/* <h2>trivia id: {triviaDetail.id}</h2> */}
         <div id="editButtons">
           <form onSubmit={this.props.deleteTrivia}>
             <input type="hidden" name="triviaId" value={triviaDetail.id} />
@@ -132,9 +114,6 @@ class TriviaDetail extends Component {
               value="Delete This Question"
             />
           </form>
-          {/* <form onSubmit={this.props.updateTrivia}>
-            <input type="hidden" name="triviaId" value={triviaDetail.id} />
-          </form> */}
           <br />
           <br />
           <br />

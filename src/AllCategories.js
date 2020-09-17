@@ -6,6 +6,7 @@ class AllCategories extends Component {
   render() {
     const allCategories = this.props.categories.map((category) => {
       return (
+        // <li className="categoryList" key={category.id} {...category.name}></li>
         <li className="categoryList" key={category.id}>
           <Link className="categoryList" to={`/category/${category.id}`}>
             {category.name}
@@ -13,6 +14,8 @@ class AllCategories extends Component {
         </li>
       );
     });
+    console.log(allCategories);
+    // console.log(allCategories.props);
 
     return (
       <div>

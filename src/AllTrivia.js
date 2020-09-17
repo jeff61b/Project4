@@ -1,13 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-// Muse react app conversion to Trivia react app
-// artist => question
-// artists => triviaQuestions
-// AllArtists => AllTrivia
-// allArtists => allTrivia
-// ArtistDetail => TriviaDetail
-
 class AllTrivia extends Component {
   render() {
     console.log("AllTrivia");

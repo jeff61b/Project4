@@ -8,9 +8,11 @@ import UpdateTrivia from "./UpdateTrivia.js";
 import AllCategories from "./AllCategories.js";
 
 import Axios from "axios";
-const backendUrl = process.env.BACKEND_URL || "http://localhost:3000/api";
-//const backendUrl =
-//  process.env.REACT_APP_BACKEND_URL || "https://muse-backend.herokuapp.com/api";
+// const backendUrl = process.env.BACKEND_URL || "http://localhost:3000/api";
+
+const backendUrl =
+  process.env.REACT_APP_BACKEND_URL ||
+  "https://trivia-backend-app.herokuapp.com/api";
 
 class App extends Component {
   constructor(props) {
@@ -39,8 +41,8 @@ class App extends Component {
         categories: response.data.categoryAll,
       });
       console.log(this.state.categories);
-      console.log(response);
-      console.log(response.data.categoryAll.name);
+      console.log(response.data);
+      console.log(response.data.name);
     });
     const myUrl = window.location.href;
     this.setState({
@@ -72,7 +74,6 @@ class App extends Component {
     });
     setTimeout(console.log(this.state.triviaQuestions), 1000);
     window.location.assign(this.state.currentUrl);
-    // this.componentDidMount();
   };
 
   // When a user clicks the Add Trivia button, the trivia data they
@@ -86,7 +87,6 @@ class App extends Component {
     console.log("addTrivia");
     event.preventDefault();
     console.log(event.target.question.value);
-    console.log(event.target.categoryId.value);
 
     Axios.post(`${backendUrl}/trivia`, {
       question: event.target.question.value,
@@ -109,11 +109,6 @@ class App extends Component {
     // this.componentDidMount();
   };
 
-  // const updateTrivia = async (event) => {
-  //   event.preventDefault();
-  //   let updateId = parseInt(event.target.triviaId.value);
-  // }
-
   // When a user clicks the Update Trivia button, the trivia data they
   // edited is passed to this method and rewritten to the database.
   // if no category was entered the category of 5 is the default.
@@ -124,24 +119,10 @@ class App extends Component {
     event.preventDefault();
     console.log("updateTrivia");
     console.log(event);
-    console.log(event.target.question.value);
-    // let xyz = 0 / 0;
 
     let updateId = parseInt(event.target.triviaId.value);
     console.log(updateId);
     //   console.log(event.target.categoryId.value);
-
-    // let response = await Axios.put(`${backendUrl}/trivia/${updateId}`, {
-    //      question: event.target.question.value,
-    //      answer1: event.target.answer1.value,
-    //      answer2: event.target.answer2.value,
-    //      answer3: event.target.answer3.value,
-    //      answer4: event.target.answer4.value,
-    //      correctAnswer: event.target.correctAnswer.value,
-    //      categoryId: event.target.categoryId.value,
-    //      id: updateId,
-    // });
-    // let updatedTrivia = response.data.triviaQuestion;
 
     Axios.put(`${backendUrl}/trivia/${updateId}`, {
       question: event.target.question.value,
@@ -163,7 +144,7 @@ class App extends Component {
       });
     });
     setTimeout(console.log(this.state.triviaQuestions), 1000);
-    window.location.assign(this.state.currentUrl);
+    setTimeout(window.location.assign(this.state.currentUrl), 1000);
   };
 
   render() {
