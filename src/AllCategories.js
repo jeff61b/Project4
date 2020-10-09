@@ -9,7 +9,7 @@ class AllCategories extends Component {
         // <li className="categoryList" key={category.id} {...category.name}></li>
         <li className="categoryList" key={category.id}>
           <Link className="categoryList" to={`/category/${category.id}`}>
-            {category.name}
+            {category.id} {category.name}
           </Link>
         </li>
       );

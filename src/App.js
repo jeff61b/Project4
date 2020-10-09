@@ -4,15 +4,14 @@ import "./App.css";
 import { Route, Link, Switch } from "react-router-dom";
 import TriviaDetail from "./TriviaDetail.js";
 import AllTrivia from "./AllTrivia.js";
-import UpdateTrivia from "./UpdateTrivia.js";
+//import UpdateTrivia from "./UpdateTrivia.js";
 import AllCategories from "./AllCategories.js";
 
 import Axios from "axios";
-// const backendUrl = process.env.BACKEND_URL || "http://localhost:3000/api";
+const backendUrl = process.env.BACKEND_URL || "http://localhost:3000/api";
 
-const backendUrl =
-  process.env.REACT_APP_BACKEND_URL ||
-  "https://trivia-backend-app.herokuapp.com/api";
+//const backendUrl =   process.env.REACT_APP_BACKEND_URL || "https://trivia-backend-app.herokuapp.com/api";
+const myUrl = window.location.href;
 
 class App extends Component {
   constructor(props) {
@@ -20,7 +19,7 @@ class App extends Component {
     this.state = {
       triviaQuestions: [],
       categories: [],
-      currentUrl: window.location.href,
+      currentUrl: myUrl,
     };
   }
 
@@ -31,26 +30,25 @@ class App extends Component {
       this.setState({
         triviaQuestions: response.data.triviaQuestions,
       });
-      console.log(this.state.triviaQuestions);
-      console.log(response);
     });
     Axios.get(`${backendUrl}/category`).then((response) => {
       console.log(response.data.categoryAll);
-
       this.setState({
         categories: response.data.categoryAll,
       });
       console.log(this.state.categories);
       console.log(response.data);
-      console.log(response.data.name);
     });
     const myUrl = window.location.href;
     this.setState({
       currentUrl: myUrl,
     });
     console.log(myUrl);
-    console.log(this.state.currentUrl);
-    console.log(window.location.href);
+    // If "trivia" is not at the end of the url, then add "trivia"
+    // so the AllTrivia page will display first.
+    if (myUrl.substring(myUrl.length - 7, myUrl.length) !== "/trivia") {
+      window.location.replace(myUrl + "trivia");
+    }
   }
 
   // From the trivia detail page, when the user clicks the "Delete
