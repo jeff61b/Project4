@@ -107,6 +107,18 @@
   /* background-color: rgb(30, 0, 10); */
 }
 
+#newCategory {
+  width: 250px;
+  font-size: larger;
+  font-weight: bold;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  /* background-color: darkblue; */
+  /* background-color: rgb(10, 10, 60); */
+  background-color: rgb(100, 100, 120);
+  background-color: lightgray;
+}
+
 #numSection {
   display: flex;
   flex-direction: row;

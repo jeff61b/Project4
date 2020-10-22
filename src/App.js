@@ -46,8 +46,10 @@ class App extends Component {
     console.log(myUrl);
     // If "trivia" is not at the end of the url, then add "trivia"
     // so the AllTrivia page will display first.
-    if (myUrl.substring(myUrl.length - 7, myUrl.length) !== "/trivia") {
+    if (myUrl.substring(myUrl.length - 6, myUrl.length) !== "trivia") {
       window.location.replace(myUrl + "trivia");
+      console.log("update myurl with trivia ");
+      return;
     }
   }
 
@@ -145,6 +147,22 @@ class App extends Component {
     setTimeout(window.location.assign(this.state.currentUrl), 1000);
   };
 
+  newCategory = (event) => {
+    console.log("newCategory logic here");
+    event.preventDefault();
+    console.log(event.target.category.value);
+    Axios.post(`${backendUrl}/category`, {
+      name: event.target.category.value,
+    }).then((response) => {
+      console.log(response);
+      let tempCategories = this.state.categories;
+      tempCategories.push(response.data.newCategory);
+      this.setState({
+        categories: tempCategories,
+      });
+    });
+  };
+
   render() {
     console.log(this.state);
     return (
@@ -174,7 +192,10 @@ class App extends Component {
               exact
               path="/category"
               component={() => (
-                <AllCategories categories={this.state.categories} />
+                <AllCategories
+                  categories={this.state.categories}
+                  newCategory={this.newCategory}
+                />
               )}
             />
             <Route
