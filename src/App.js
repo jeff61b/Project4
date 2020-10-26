@@ -147,6 +147,9 @@ class App extends Component {
     setTimeout(window.location.assign(this.state.currentUrl), 1000);
   };
 
+  // When a user clicks the Add Category button, this logic
+  // adds the new category to the database and saves it to
+  // the categories array.
   newCategory = (event) => {
     console.log("newCategory logic here");
     event.preventDefault();
