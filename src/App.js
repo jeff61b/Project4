@@ -6,12 +6,15 @@ import TriviaDetail from "./TriviaDetail.js";
 import AllTrivia from "./AllTrivia.js";
 //import UpdateTrivia from "./UpdateTrivia.js";
 import AllCategories from "./AllCategories.js";
+import CategoryDetail from "./CategoryDetail.js";
 
 import Axios from "axios";
 const backendUrl = process.env.BACKEND_URL || "http://localhost:3000/api";
 
 //const backendUrl =   process.env.REACT_APP_BACKEND_URL || "https://trivia-backend-app.herokuapp.com/api";
 const myUrl = window.location.href;
+console.log(backendUrl);
+console.log(myUrl);
 
 class App extends Component {
   constructor(props) {
@@ -166,6 +169,58 @@ class App extends Component {
     });
   };
 
+  // When the user clicks the Delete Category button, this logic
+  // deletes that category from the database.
+  deleteCategory = (event) => {
+    console.log("delete Category");
+    console.log(event.target.categoryId.value);
+    event.preventDefault();
+    let deleteId = event.target.categoryId.value;
+    Axios.delete(`${backendUrl}/category/${deleteId}`).then((response) => {
+      console.log(response);
+      let tempCategories = this.state.categories;
+      const index = tempCategories.indexOf(deleteId);
+      if (index > -1) {
+        tempCategories.splice(index, 1);
+        this.setState({
+          categories: tempCategories,
+        });
+      }
+    });
+    setTimeout(console.log(this.state.categories), 1000);
+    window.location.assign(this.state.currentUrl);
+    console.log(myUrl);
+    console.log(backendUrl);
+  };
+
+  // When the user clicks the Update Category button, this logic
+  // updates that category on the database on on the categories array.
+  updateCategory = (event) => {
+    event.preventDefault();
+    console.log("updateCategory");
+    console.log(event);
+
+    let updateId = parseInt(event.target.categoryId.value);
+    console.log(updateId);
+    //   console.log(event.target.categoryId.value);
+
+    Axios.put(`${backendUrl}/category/${updateId}`, {
+      name: event.target.category.value,
+      id: updateId,
+    }).then((response) => {
+      console.log(response);
+      console.log(response.data.category);
+      let tempCategories = this.state.categories;
+      tempCategories.push(response.data.categories);
+      console.log(tempCategories);
+      this.setState({
+        categories: tempCategories,
+      });
+    });
+    setTimeout(console.log(this.state.categories), 1000);
+    setTimeout(window.location.assign(this.state.currentUrl), 1000);
+  };
+
   render() {
     console.log(this.state);
     return (
@@ -209,6 +264,17 @@ class App extends Component {
                   triviaQuestions={this.state.triviaQuestions}
                   deleteTrivia={this.deleteTrivia}
                   updateTrivia={this.updateTrivia}
+                />
+              )}
+            />
+            <Route
+              path="/category/:id"
+              component={(routerProps) => (
+                <CategoryDetail
+                  {...routerProps}
+                  categories={this.state.categories}
+                  deleteCategory={this.deleteCategory}
+                  updateCategory={this.updateCategory}
                 />
               )}
             />

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Link, Switch } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 //console.log(this.props.categories);
 class AllCategories extends Component {
@@ -7,17 +7,16 @@ class AllCategories extends Component {
     const allCategories = this.props.categories.map((category) => {
       return (
         // <li className="categoryList" key={category.id} {...category.name}></li>
-        <div>
-          <li className="categoryList" key={category.id}>
-            <Link className="categoryList" to={`/category/${category.id}`}>
-              {category.id} {category.name}
-            </Link>
-          </li>
-        </div>
+        <li className="categoryList" key={category.id}>
+          <Link className="categoryList" to={`/category/${category.id}`}>
+            {category.name}
+          </Link>
+        </li>
       );
     });
     console.log(allCategories);
     // console.log(allCategories.props);
+    //            {category.id} {category.name}
 
     return (
       <div>
