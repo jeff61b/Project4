@@ -27,6 +27,7 @@ class CategoryDetail extends Component {
           <br />
           <input id="clickButton" type="submit" value="Update This Category" />
         </form>
+        <br />
 
         <form onSubmit={this.props.deleteCategory}>
           <input type="hidden" name="categoryId" value={categoryDetail.id} />

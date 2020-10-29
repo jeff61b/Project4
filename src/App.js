@@ -9,11 +9,11 @@ import AllCategories from "./AllCategories.js";
 import CategoryDetail from "./CategoryDetail.js";
 
 import Axios from "axios";
-//const backendUrl = process.env.BACKEND_URL || "http://localhost:3000/api";
+const backendUrl = process.env.BACKEND_URL || "http://localhost:3000/api";
 
-const backendUrl =
-  process.env.REACT_APP_BACKEND_URL ||
-  "https://trivia-backend-app.herokuapp.com/api";
+//const backendUrl =
+//  process.env.REACT_APP_BACKEND_URL ||
+//  "https://trivia-backend-app.herokuapp.com/api";
 const myUrl = window.location.href;
 console.log(backendUrl);
 console.log(myUrl);

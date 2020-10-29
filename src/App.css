@@ -58,7 +58,7 @@
 }
 
 #updCategory {
-  width: 200px;
+  width: 225px;
   font-size: larger;
   font-weight: bold;
   margin-top: 3px;
@@ -145,6 +145,8 @@
 #detailRecord {
   margin-left: 50px;
   margin-right: 50px;
+  justify-content: center;
+  align-content: center;
 }
 
 #detailQuestion {
@@ -168,7 +170,7 @@
 #editButtons {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   align-content: center;
   text-align: center;
   /* justify-items: center; */
@@ -179,6 +181,7 @@
   margin-bottom: 50px;
   margin-top: 20px;
   margin-left: 18%;
+  margin-right: 18%;
 }
 
 .App-header {
